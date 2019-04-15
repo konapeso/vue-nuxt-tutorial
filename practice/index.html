@@ -8,27 +8,48 @@
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
-   <h1>Vue.js</h1>
-   <div id="app">
-       {{ message * 1.08 + '円' }}
-   </div> 
-   <hr>
-   <input type="text" onInput="doAction(event);">
+        <h1>  Vue.js </h1>
+        <div id ="app">
+        {{ message }}
+        </div>
+        <hr>
+        <button onclick= "doAction();"> 
+            click
+        </button>
+        <script>
+        var data  ={
+            message: 'Hello Vue!',
+            items: ['One', 'Two', 'Three', 'Four', 'Five']
+        };
+    
+        var app = new Vue({
+            el: '#app',
+            data: data,
+            render: (element)=>{
+                var p = element("p",
+                {style:'font-size:20px;'},
+                data.message);
 
-   <script>
-       var data ={
-           message:'please type!'
-       };
+                var li = data.items.map(item=> element('li',item));
+                var ol = element("ol",li);
+                var div = element("div", [p, ol]);
+                return div;
+            }
+        })
 
-       var app = new Vue({
-           el: '#app',
-           data: data
-       })
-
-       function doAction(event){
-           data.message =event.target.value;
-       }
+        function doAction(){
+            var newdata = [
+                'いち', 'に', 'さん', 'よん', 'ご'
+            ]
+            data.message = "クリックしました!!!";
+            data.items [0] ='ゼロ';
+            for (n in data.items){
+                data.items[n] = newdata[n];
+            }
+        }
+    
+    
+        </script>
    
-   </script>
 </body>
 </html>
