@@ -25,28 +25,19 @@
         var app = new Vue({
             el: '#app',
             data: data,
-            render: (element)=>{
-                var p = element("p",
-                {style:'font-size:20px;'},
-                data.message);
-
-                var li = data.items.map(item=> element('li',item));
-                var ol = element("ol",li);
-                var div = element("div", [p, ol]);
-                return div;
+            render: (h)=> {
+                return h("div",[
+                    h("p",
+                    {style: 'font-size:20pt;'},
+                    data.message
+                    ),
+                    h("ol",
+                    data.items.map(i=> v('li',i))
+                    )
+                ]);
             }
-        })
+        });
 
-        function doAction(){
-            var newdata = [
-                'いち', 'に', 'さん', 'よん', 'ご'
-            ]
-            data.message = "クリックしました!!!";
-            data.items [0] ='ゼロ';
-            for (n in data.items){
-                data.items[n] = newdata[n];
-            }
-        }
     
     
         </script>
