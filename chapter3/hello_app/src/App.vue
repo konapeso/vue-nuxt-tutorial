@@ -1,30 +1,25 @@
 <template>
   <div id="app">
-    <HelloWorld v-bind:title="message" 
-    v-bind:num="num" />
-  
-    </div>
+    
+    <HelloWorld title="validate" />
+  </div>
 </template>
 
 <script>
-
 import HelloWorld from './components/HelloWorld.vue'
 
-export default{
+export default {
   name: 'app',
-  components:{
+  components: {
     HelloWorld
   },
-  data: function(){
-    return {
+  data:function(){
+    return{
       message:'validate',
-      num:'abc',
+      num:90,
     };
   }
 }
-
-
-
 </script>
 
 <style>
